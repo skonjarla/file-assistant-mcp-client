@@ -79,6 +79,10 @@ For more, see the [MCP Security Best Practices](https://modelcontextprotocol.io/
    ```
 
 2. Configure the application properties in `src/main/resources/application.properties`:
+- Keycloak server port: 9090
+- Keycloak realm: home
+- Keycloak client ID and secret: mcpclient and <your_client_secret>
+- NOTE: Please configure the server and client credentials as per your Keycloak setup.
    ```properties
    # Server configuration
    server.port=8383
