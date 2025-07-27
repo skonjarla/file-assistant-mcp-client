@@ -89,6 +89,19 @@ For more, see the [MCP Security Best Practices](https://modelcontextprotocol.io/
    - For JWT token validation and for client app - mcpfileclient.
    - To obtain MCP Server details at the time of MCP Client startup - mcpclient.
    - Users with roles to login at MCP Client to access MCP Server.
+  - Configure React App for Keycloak: Make appropiate changes to keycloak.ts file in file-search-ui/src/app/keycloak.ts
+  ```jsx
+   import Keycloak from 'keycloak-js';
+
+   const keycloak = new Keycloak({
+     url: 'http://localhost:9090/',
+     realm: 'home',
+     clientId: 'mcpfileclient',
+   });
+
+   export default keycloak;
+  ```
+
      ```properties
      # Server configuration
      server.port=8383
