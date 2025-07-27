@@ -83,40 +83,46 @@ For more, see the [MCP Security Best Practices](https://modelcontextprotocol.io/
 - Keycloak realm: home
 - Keycloak client ID and secret: mcpclient and <your_client_secret>
 - NOTE: Please configure the server and client credentials as per your Keycloak setup.
-   ```properties
-   # Server configuration
-   server.port=8383
+- Keycloak configuration:
+   - Essentially, keycloak is used for authentication and authorization.
+   - Following accounts are created for MCP Server and Client in keycloak.
+   - For JWT token validation and for client app - mcpfileclient.
+   - To obtain MCP Server details at the time of MCP Client startup - mcpclient.
+   - Users with roles to login at MCP Client to access MCP Server.
+     ```properties
+     # Server configuration
+     server.port=8383
    
-   # Keycloak OAuth2 Configuration
-   spring.security.oauth2.client.provider.authserver.issuer-uri=http://localhost:9090/realms/home
-   spring.security.oauth2.client.registration.authserver-client-credentials.client-id=mcpclient
-   spring.security.oauth2.client.registration.authserver-client-credentials.client-secret=your_client_secret
+     # Keycloak OAuth2 Configuration
+     spring.security.oauth2.client.provider.authserver.issuer-uri=http://localhost:9090/realms/home
+     spring.security.oauth2.client.registration.authserver-client-credentials.client-id=mcpclient
+     spring.security.oauth2.client.registration.authserver-client-credentials.client-secret=your_client_secret
    
-   # MCP Server configuration
-   spring.ai.mcp.client.enabled=true
-   spring.ai.mcp.client.name=file-search-mcp-client
-   spring.ai.mcp.client.version=1.0.0
-   spring.ai.mcp.client.request-timeout=30s
-   spring.ai.mcp.client.type=SYNC
-   spring.ai.mcp.client.sse.connections.server.url=http://localhost:8080
+     # MCP Server configuration
+     spring.ai.mcp.client.enabled=true
+     spring.ai.mcp.client.name=file-search-mcp-client
+     spring.ai.mcp.client.version=1.0.0
+     spring.ai.mcp.client.request-timeout=30s
+     spring.ai.mcp.client.type=SYNC
+     spring.ai.mcp.client.sse.connections.server.url=http://localhost:8080
    
-   # Ollama configuration (for local models)
-   ollama.host=http://localhost:11434
-   ollama.chat.model=qwen3:14b
-   ollama.photo.chat.model=qwen2.5vl
-   ollama.chat.options.temperature=0.9
+     # Ollama configuration (for local models)
+     ollama.host=http://localhost:11434
+     ollama.chat.model=qwen3:14b
+     ollama.photo.chat.model=qwen2.5vl
+     ollama.chat.options.temperature=0.9
    
-   # OpenAI/Groq configuration
-   spring.ai.openai.base-url=https://api.groq.com/openai
-   spring.ai.openai.api-key=${OPENAI_API_KEY}
-   spring.ai.openai.chat.options.model=qwen/qwen3-32b
-   spring.ai.openai.chat.options.temperature=0.9
-   spring.ai.openai.chat.options.maxCompletionTokens=32768
+     # OpenAI/Groq configuration
+     spring.ai.openai.base-url=https://api.groq.com/openai
+     spring.ai.openai.api-key=${OPENAI_API_KEY}
+     spring.ai.openai.chat.options.model=qwen/qwen3-32b
+     spring.ai.openai.chat.options.temperature=0.9
+     spring.ai.openai.chat.options.maxCompletionTokens=32768
    
-   file.assistant.system.prompt=classpath:file_assistant_system_prompt_with_tool.txt
-   result.format.system.prompt=classpath:result_format_system_prompt.txt
-   vector.query.template=classpath:vector_query_template.txt
-   ```
+     file.assistant.system.prompt=classpath:file_assistant_system_prompt_with_tool.txt
+     result.format.system.prompt=classpath:result_format_system_prompt.txt
+     vector.query.template=classpath:vector_query_template.txt
+     ```
 
 3. System Prompts (optional):
    - `file.assistant.system.prompt`: Path to system prompt for file assistant
