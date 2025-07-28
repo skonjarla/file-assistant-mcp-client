@@ -330,14 +330,7 @@ mvn test
 
 This project is licensed under the terms of the MIT license.
 
-## Support
+## Disclaimer
 
-For issues and feature requests, please use the [issue tracker](<repository-url>/issues).
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
+This project is for educational and research purposes only. It is not intended for production use.
+Please use at your own risk and ensure proper security measures are in place.
